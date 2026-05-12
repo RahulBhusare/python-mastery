@@ -74,7 +74,7 @@ class CurrentAccount(BankAccount):
 
 # Example usage
 savings = SavingsAccount("Rahul", 1, 10000, "Savings")
-current = CurrentAccount("Priya", 2, 1, "Current")
+current = CurrentAccount("Priya", 2000, 1, "Current")
 
 print(savings.get_interest())   # 400.0
 print(current.get_interest())   # 0.0
