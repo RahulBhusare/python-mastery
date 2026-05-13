@@ -138,4 +138,7 @@ if __name__ == "__main__":
     print(acc1.balance)          # 15000        
     acc1.withdraw(2000)
     print(acc1.balance)          # 13000
+
+    #acc1.balance = 123         #This is raise exception
+    print(acc1)
     

@@ -37,8 +37,7 @@ class Bank:
     
     def total_deposits(self):
         return sum(acc.balance for acc in self.accounts.values())
-
-
+    
 bank = Bank()
 account1 = bank.create_account("savings", "John Doe", 1, 1000, 0.02)
 account2 = bank.create_account("current", "Rahul", 2, 200, 0.03)
