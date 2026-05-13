@@ -107,20 +107,14 @@ class CurrentAccount(BankAccount):
 
 # Example usage
 
-rahul = SavingsAccount("Rahul", 1, 10000, "Savings")
-priya = CurrentAccount("Priya", 2, 5000, "Current")
-john = SavingsAccount("John", 3, 20000, "Savings")
+account = SavingsAccount("Rahul", 1, 10000, "Savings")
+print(account.balance)          # 10000
 
-accounts = [rahul, priya, john]
-for acc in accounts:
-    print(acc.get_details())
+account.deposit(5000)
+print(account.balance)          # 15000
 
-print(rahul.balance)
-#rahul.balance = 15000  # This will raise an AttributeError
+account.withdraw(2000)
+print(account.balance)          # 13000
 
-rahul.deposit(5000)
-print(rahul.balance)
-
-priya.withdraw(6000)  # This will work due to overdraft
-print(priya.balance)    
+account.balance = 15000         # ❌ should raise AttributeError
 
