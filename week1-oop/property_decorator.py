@@ -121,3 +121,6 @@ print(rahul.balance)
 rahul.deposit(5000)
 print(rahul.balance)
 
+priya.withdraw(6000)  # This will work due to overdraft
+print(priya.balance)    
+
