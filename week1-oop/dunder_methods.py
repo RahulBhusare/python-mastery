@@ -119,16 +119,23 @@ class CurrentAccount(BankAccount):
 
 # Example usage
 
-acc1 = SavingsAccount("Rahul", 1, 10000, "Savings")
-acc2 = SavingsAccount("Priya", 1, 5000, "Savings")
-acc3 = SavingsAccount("John", 2, 20000, "Savings")
+if __name__ == "__main__":
+    acc1 = SavingsAccount("Rahul", 1, 10000, "Savings")
+    acc2 = SavingsAccount("Priya", 1, 5000, "Savings")
+    acc3 = SavingsAccount("John", 2, 20000, "Savings")
 
-print(str(acc1))        # user friendly
-print(repr(acc1))       # developer friendly
-print(acc1 == acc2)     # True - same account_num
-print(acc1 == acc3)     # False - different account_num
-print(acc1 < acc3)      # True - acc1 balance < acc3 balance
+    print(str(acc1))        # user friendly
+    print(repr(acc1))       # developer friendly
+    print(acc1 == acc2)     # True - same account_num
+    print(acc1 == acc3)     # False - different account_num
+    print(acc1 < acc3)      # True - acc1 balance < acc3 balance
 
-# Sorting by balance
-accounts = [acc1, acc3, acc2]
-print(sorted(accounts))  # sorted by balance
+    # Sorting by balance
+    accounts = [acc1, acc3, acc2]
+    print(sorted(accounts))  # sorted by balance
+    print(acc1.get_details(show_interest=True, show_account_type=True))
+    acc1.deposit(5000)
+    print(acc1.balance)          # 15000        
+    acc1.withdraw(2000)
+    print(acc1.balance)          # 13000
+    
