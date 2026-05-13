@@ -78,6 +78,5 @@ accounts = [
     CurrentAccount("Priya", 2, 5000, "Current"),
     SavingsAccount("John", 3, 20000, "Savings")
 ]
-
 for account in accounts:
     print(account.get_interest())
