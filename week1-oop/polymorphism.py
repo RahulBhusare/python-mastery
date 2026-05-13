@@ -10,6 +10,11 @@ class BankAccount(ABC):
     def get_interest(self):
         pass
 
+    def get_details(self, *args, **kwargs):
+        details = f"BankAccount(account_holder='{self.account_holder}', account_num={self.account_num}, balance={self.get_balance()}"
+        details += ")"
+        return details
+
     def deposit(self, amt):
         if not isinstance(amt, (int,float)):
               raise TypeError("Amount must be a number")
@@ -51,6 +56,16 @@ class SavingsAccount(BankAccount):
         # Placeholder implementation - replace with actual interest calculation logic
         int_rate =  self.get_balance() * 0.04  # Example: 4% interest on the current balance
         return int_rate
+    
+    def get_details(self, show_interest=True, show_account_type=False):
+        details = f"SavingsAccount(account_holder='{self.account_holder}', account_num={self.account_num}, balance={self.get_balance()}"
+        if show_account_type:
+            details += f", account_type='{self.account_type}'"
+        if show_interest:
+            details += f", Interest={self.get_interest()}"
+        details += ")"
+        return details
+
 
 class CurrentAccount(BankAccount):
     def __init__(self, account_holder, account_num, balance, account_type):
@@ -72,6 +87,15 @@ class CurrentAccount(BankAccount):
             raise ValueError("Overdraft limit exceeded")
         self._balance -= amt  # can go negative
 
+    def get_details(self, show_interest=True, show_account_type=True):
+        details = f"CurrentAccount(account_holder='{self.account_holder}', account_num={self.account_num}, balance={self.get_balance()}"
+        if show_account_type:
+            details += f", account_type='{self.account_type}'"
+        if show_interest:
+            details += f", Interest={self.get_interest()}"
+        details += ")"
+        return details
+
 # Example usage
 accounts = [
     SavingsAccount("Rahul", 1, 10000, "Savings"),
@@ -81,3 +105,4 @@ accounts = [
 
 for account in accounts:
     print(account.get_interest())
+    print(account.get_details())
