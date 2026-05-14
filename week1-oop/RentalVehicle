@@ -1,0 +1,78 @@
+from abc import ABC,abstractmethod
+
+class Vehicle(ABC):
+    def __init__(self,brand, model, rate_per_day):
+        self.brand = brand
+        self.model = model
+        self._rate_per_day = rate_per_day
+
+    @abstractmethod
+    def calculate_rent(self,days):
+        pass
+
+    @abstractmethod
+    def fuel_type(self):
+        pass
+
+    @property
+    def rate_per_day(self):
+        return self._rate_per_day
+
+    @rate_per_day.setter
+    def rate_per_day(self,days):
+        if not isinstance(days, int):
+            raise ValueError("Days should be integer")
+        self._rate_per_day = days
+
+    @rate_per_day.deleter
+    def rate_per_day(self):
+        raise ValueError("Can't Delete the per day rate")
+
+class Car(Vehicle):
+    def __init__(self, brand, model, rate_per_day,f_type= None):
+        super().__init__(brand, model, rate_per_day)
+        self.f_type = f_type
+
+    def calculate_rent(self,days):
+        return self.rate_per_day * days
+    
+    def fuel_type(self):
+        return f'{self.f_type}'
+
+class ElectricCar(Car):
+    def __init__(self, brand, model, rate_per_day):
+        super().__init__(brand, model, rate_per_day)
+        self.f_type = 'Electric'
+
+    def calculate_rent(self, days):
+        return super().calculate_rent(days) * 0.8
+    
+    def fuel_type(self):
+        return super().fuel_type()
+
+
+class Truck(Vehicle):
+    def __init__(self, brand, model, rate_per_day,f_type = None):
+        super().__init__(brand, model, rate_per_day)
+        self.f_type = f_type
+    
+    def calculate_rent(self,days):
+        return self.rate_per_day * days * 1.5
+    
+    def fuel_type(self):
+        return f'{self.f_type}'
+
+car = Car('Tata', 'Nexon', 100, 'ELECTRIC')
+ec = ElectricCar('Tata', 'Nexon', 100)
+truck = Truck('Eicher', 'Pro', 1000, 'Diesel')
+
+print(car.calculate_rent(10))    # 1000
+print(ec.calculate_rent(10))     # 800.0
+print(truck.calculate_rent(10))  # 15000.0
+
+print(car.fuel_type())           # CNG
+print(ec.fuel_type())            # Electric
+print(truck.fuel_type())         # Diesel
+
+
+    
