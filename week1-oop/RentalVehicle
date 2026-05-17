@@ -62,7 +62,7 @@ class Truck(Vehicle):
     def fuel_type(self):
         return f'{self.f_type}'
 
-car = Car('Tata', 'Nexon', 100, 'ELECTRIC')
+car = Car('Tata', 'Nexon', 100, 'Electric')
 ec = ElectricCar('Tata', 'Nexon', 100)
 truck = Truck('Eicher', 'Pro', 1000, 'Diesel')
 
